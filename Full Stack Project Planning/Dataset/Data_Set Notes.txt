@@ -1,0 +1,2 @@
+Description: The data represents grant payments made to suppliers who received greater than $250,000 in grant payments during the 2014-2015 fiscal year.
+Source:  Office of the Comptroller General - https://opendata.gov.nl.ca/public/opendata/page/?page-id=datasetdetails&id=484
