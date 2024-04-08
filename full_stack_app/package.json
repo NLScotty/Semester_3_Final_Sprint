@@ -9,8 +9,10 @@
   "author": "Scott Normore",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.18.3",
+    "mongodb": "^6.5.0",
     "pg": "^8.11.3"
   }
 }
