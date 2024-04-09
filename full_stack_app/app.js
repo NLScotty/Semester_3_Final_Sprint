@@ -7,8 +7,9 @@
 const express = require("express");
 
 // Files that contain the different routes of my application
-const apiRoutes = require('./routes/api-routes');
-const uiRoutes = require('./routes/ui-routes');
+const publicRoutes = require('./routes/public-routes');
+const userRoutes = require('./routes/user-routes');
+const testRoutes = require('./routes/test-routes');
 
 // we set app to express so we can call the express functions
 const app = express();
@@ -30,10 +31,13 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 
-// I first have it check to see if the url is an api request. If so, check the api routes.
-app.use('/api', apiRoutes);
-// I then check the website/ui routes
-app.use('/', uiRoutes)
+//
+app.use('/test', testRoutes);
+
+// 
+app.use('/user', userRoutes);
+// 
+app.use('/', publicRoutes)
 // If no route is found, give a 404
 app.use((request, response) => {
     if(DEBUG) console.log('404 - route not found.');
