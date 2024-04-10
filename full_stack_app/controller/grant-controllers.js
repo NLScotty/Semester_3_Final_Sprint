@@ -11,7 +11,7 @@ async function getGrants(database){
         return grants;
     }
     else{
-        return null;
+        return [];
     }
 }
 

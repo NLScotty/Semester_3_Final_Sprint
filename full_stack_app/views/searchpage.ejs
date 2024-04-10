@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Search Result Page</title>
+</head>
+<body>
+    
+    <%- include ('./components/navbar.ejs') %>
+    <div id="main_content_zone">
+        <h1>Search Page</h1>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label for="database"> Database: </label>
+                    </td>
+                    <td>
+                        <select name="database" id="database" name="database">
+                            <option value="mongo">Mongo DB</option>
+                            <option value="sql">SQL</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="input"> Search Value: </label>
+                    </td>
+                    <td>
+                        <input type ="text" id="input" name="input"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="search"> Search Type: </label>
+                    </td>
+                    <td>
+                        <select name="search" id="search" name="search" onchange="toggleDisplay()">
+                            <option value="name">By Name</option>
+                            <option value="amount"> By Amount</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="name_options">
+                    <td>
+                        <label for="name_option"> Search Option: </label>
+                    </td>
+                    <td>
+                        <select name="name_option" id="name_option">
+                            <option value="containing">Contains</option>
+                            <option value="exact">Matches</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="amount_options">
+                    <td>
+                        <label for="amount_option"> Search Option: </label>
+                    </td>
+                    <td>
+                        <select name="amount_option" id="amount_option">
+                            <option value="less">Less Than</option>
+                            <option value="more">Greater Than</option>
+                            <option value="equal">Equal To</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <input type = "submit">
+        </form>
+    </div>
+
+
+    <script>
+        function toggleDisplay(){
+            var selectedValue = document.getElementById('search').value;
+            console.log(selectedValue);
+            if(selectedValue == "name"){
+                document.getElementById('name_options').style.display = 'table-row';
+                document.getElementById('amount_options').style.display = 'none';
+            }else if(selectedValue == "amount"){
+                document.getElementById('name_options').style.display = 'none';
+                document.getElementById('amount_options').style.display = 'table-row';
+            }
+        };
+    </script>
+
+</body>
+</html>

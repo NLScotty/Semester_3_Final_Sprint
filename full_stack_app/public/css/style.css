@@ -60,7 +60,7 @@ body{
     color: white;
 }
 #main_content_zone{
-    width: 1000px;
+    width: 75%;
     height: 100%;
     margin: auto;
     background-color: white;
@@ -69,4 +69,7 @@ body{
 }
 table{
     margin: auto;
+}
+#amount_options{
+    display: none;
 }
