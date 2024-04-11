@@ -4,7 +4,12 @@
 */
 
 // Node modules needed for this file
+require('dotenv').config()
 const express = require("express");
+const bcrypt = require('bcrypt')
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
 
 // Files that contain the different routes of my application
 const publicRoutes = require('./routes/public-routes');
@@ -13,6 +18,12 @@ const testRoutes = require('./routes/test-routes');
 
 // we set app to express so we can call the express functions
 const app = express();
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
 // we set a port number
 const PORT =  3000;
 

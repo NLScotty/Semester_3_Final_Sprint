@@ -1,18 +1,20 @@
-const express =require('express');
+const express = require('express');
+const sqlUserDal = require('../services/sql-user-dal') // PostgreSQL DAL for Users
+const bcrypt = require('bcrypt')
 
 const router = express.Router();
 
-router.get('login', (request, response) => {
+router.get('/login', (request, response) => {
     response.render('login');    
 })
 
-router.get('register', (request, response) => {
+router.get('/register', (request, response) => {
     response.render('register'); 
 })
 
-app.post('/register', async (req, res) => {
+router.post('/register', async (request, response) => {
     try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      const hashedPassword = await bcrypt.hash(request.body.password, 10)
       /*
       users.push({
         id: Date.now().toString(),
@@ -21,9 +23,10 @@ app.post('/register', async (req, res) => {
         password: hashedPassword
       })
       */
-      res.redirect('/login')
+      let result = await sqlUserDal.addUser(request.body.fname, request.body.lname, request.body.email, hashedPassword)
+      response.redirect('/login')
     } catch {
-      res.redirect('/register')
+      response.redirect('/register')
     }
 })
 
