@@ -25,7 +25,7 @@ async function getUserById(id) {
 async function getUserByEmail(email) {
     const sql = `SELECT * FROM Users WHERE email = $1`;
     try {
-      let result = await dal.query(sql, [id]);
+      let result = await dal.query(sql, [email]);
       return result.rows[0];
     } catch (error) { 
       console.log(error);

@@ -3,8 +3,17 @@ const express =require('express');
 const router = express.Router();
 const grantController = require('../controller/grant-controllers');
 
-router.get('/search', async (request, response) =>{
-    response.render('searchpage')
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+    res.redirect('/login')
+}
+
+router.use(checkAuthenticated)
+
+router.get('/search', (request, response) =>{
+    response.render('searchpage', {fname: request.user.fname})
 });
 
 router.post('/search', async (request, response) => {

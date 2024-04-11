@@ -10,13 +10,15 @@ const bcrypt = require('bcrypt')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-
+const passport = require('passport');
 // Files that contain the different routes of my application
 const publicRoutes = require('./routes/public-routes');
 const userRoutes = require('./routes/user-routes');
 const testRoutes = require('./routes/test-routes');
+const initializePassport = require('./passport-config');
+const { getUserByEmail, getUserById } = require('./services/sql-user-dal');
 
-// we set app to express so we can call the express functions
+initializePassport(passport, getUserByEmail, getUserById )
 const app = express();
 app.use(flash())
 app.use(session({
@@ -24,6 +26,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+app.use(passport.initialize())
+app.use(passport.session())
 // we set a port number
 const PORT =  3000;
 
