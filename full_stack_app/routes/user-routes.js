@@ -14,6 +14,7 @@ router.use(checkAuthenticated)
 
 router.get('/search', (request, response) =>{
     response.render('searchpage', {fname: request.user.fname})
+    //response.render('searchpage')
 });
 
 router.post('/search', async (request, response) => {
