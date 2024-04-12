@@ -28,6 +28,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'))
 // we set a port number
 const PORT =  3000;
 

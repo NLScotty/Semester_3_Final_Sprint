@@ -50,4 +50,13 @@ router.post('/search', async (request, response) => {
     }
 })
 
+router.delete('/logout', (req, res, next) => {
+    req.logOut((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/login');
+    });
+});
+
 module.exports = router;
