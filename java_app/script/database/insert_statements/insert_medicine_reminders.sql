@@ -1,0 +1,2 @@
+INSERT INTO Medicine_Reminders (user_id, medicine_name, dosage, schedule, start_date, end_date) VALUES (2, 'Insulin', '10 ml injection','daily', '1972-02-02', '1972-04-27');
+INSERT INTO Medicine_Reminders (user_id, medicine_name, dosage, schedule, start_date, end_date) VALUES (6, 'Insulin', '10 ml injection','daily', '2018-03-27', '2018-04-27');
