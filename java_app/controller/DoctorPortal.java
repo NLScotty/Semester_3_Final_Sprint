@@ -51,7 +51,7 @@ public class DoctorPortal {
     public void run(){
         System.out.print("Hello Dr."+doctor.getLastName());
         System.out.println("");
-        System.out.println("Please select an option (1-9)");
+        System.out.println("Please select an option (1-8)");
         System.out.println("===========================================");
         System.out.println("1. View Personal Information");
         System.out.println("2. Change Personal Information");
@@ -113,6 +113,7 @@ public class DoctorPortal {
                 System.out.println("New Medical License Number: ");
                 newMedicalLicenseNumber = terminalInput.next();
                 System.out.println("New Specialization: ");
+                terminalInput.nextLine();
                 newSpecialization = terminalInput.nextLine();
                 System.out.println("");
                 Doctor updatedDoctor = new Doctor(this.doctor.getId(), newFName, newLName, newEmail, newPassword, true, newMedicalLicenseNumber, newSpecialization);

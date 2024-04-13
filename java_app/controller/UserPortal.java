@@ -62,7 +62,7 @@ public class UserPortal {
     public void run(){
         System.out.println("Hello "+user.getFirstName() +" "+user.getLastName());
         System.out.println("");
-        System.out.println("Please select an option (1-9)");
+        System.out.println("Please select an option (1-12)");
         System.out.println("===========================================");
         System.out.println("1. View Personal Information");
         System.out.println("2. Change Personal Information");
