@@ -5,7 +5,12 @@ The contents of the java project can be found in these two folders
 ![Java Highlighted](https://github.com/NLScotty/Semester_3_Final_Sprint/assets/11033071/d5985cfc-a8cc-4e17-8602-4f1d131ec8ae)
 The planning phase folder has documenation and diagrams. The app folder has the application itself.
 ### Running the Application
-1. Use the openfolder option in visual studio code
+0. Set up the database by running the two highlighted
+   
+     ![Upload Database](https://github.com/NLScotty/Semester_3_Final_Sprint/assets/11033071/2e80a153-49e7-44fd-a183-97673e1d21a1)
+
+
+2. Use the openfolder option in visual studio code
    
      ![Open Folder Highlighted](https://github.com/NLScotty/Semester_3_Final_Sprint/assets/11033071/440911d1-9935-43a4-a119-b76deb678c22)
 
