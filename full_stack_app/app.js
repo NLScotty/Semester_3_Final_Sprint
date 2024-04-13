@@ -1,3 +1,4 @@
+global.DEBUG = true;
 /*
     This is the driver application/file of my project. Running this file through
     node will host the server that allows one to 
@@ -11,7 +12,8 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const passport = require('passport');
-// Files that contain the different routes of my application
+
+// Files, routes, and functions that are needed to run app.js
 const publicRoutes = require('./routes/public-routes');
 const userRoutes = require('./routes/user-routes');
 const testRoutes = require('./routes/test-routes');
@@ -26,14 +28,20 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+
+
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 // we set a port number
 const PORT =  3000;
 
+
+
+
+
 // debug stuff
-global.DEBUG = true;
+
 if(DEBUG){
     app.use((request, response, next) => {
         console.log(request.method+", "+request.url)
@@ -43,6 +51,7 @@ if(DEBUG){
 
 // we set our view enginge, what kind of data we are expecting from our requests,
 // and a folder for our public resources (images, style css.)
+
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
