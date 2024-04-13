@@ -5,36 +5,17 @@ body{
     background-color: rgb(204, 203, 204);
     height: 100%;
 }
-#nav_bar{
+#header_bar{
     background-color: rgb(50, 50, 168);
     color: white;
+    height: 100px;
     margin-left: -8px;
     margin-right: -8px;
     margin-top: -8px;
     display: flex;
+    font-size: 30px;
     justify-content: space-evenly;
-}
-.nav_button{
     text-align: center;
-    font-size: large;
-    width: 200px;
-    height: 40px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
-.nav_button:hover{
-    background-color: rgb(69, 69, 224);
-}
-.selected{
-    background-color: rgb(69, 69, 224);
-    text-decoration: underline;
-}
-.nav_link{
-    text-decoration: none;
-    color: white;
-}
-.nav_link:visited{
-    color: white;
 }
 
 .button{
@@ -60,9 +41,10 @@ body{
     color: white;
 }
 #main_content_zone{
-    width: 75%;
-    height: 100%;
-    margin: auto;
+    width: 60%;
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto ;
     background-color: white;
     text-align: center;
     padding-top: 10px;

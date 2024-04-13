@@ -7,12 +7,17 @@ const router = express.Router();
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    res.redirect('/user/search')
+      res.redirect('/user/search')
+  }else{
+      next()
   }
-  next()
 }
 
 router.use(checkNotAuthenticated)
+
+router.get('/', (request, response) => {
+  response.redirect('/login');    
+})
 
 router.get('/login', (request, response) => {
     response.render('login');    

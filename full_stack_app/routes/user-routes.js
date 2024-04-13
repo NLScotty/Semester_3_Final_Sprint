@@ -5,9 +5,11 @@ const grantController = require('../controller/grant-controllers');
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return next()
+        return next()
     }
-    res.redirect('/login')
+    else{
+        res.redirect('/login')
+    }
 }
 
 router.use(checkAuthenticated)

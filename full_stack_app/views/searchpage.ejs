@@ -8,10 +8,11 @@
 </head>
 <body>
     
-    <%- include ('./components/navbar.ejs') %>
+    <%- include ('./components/headerbar.ejs') %>
     <div id="main_content_zone">
-        <h1>Hi <%= fname %></h1>
         <h1>Search Page</h1>
+        <h2>Hello <%= fname %>!</h2>
+        <p> Use the form below to filter the results of the dataset. <br> The data represents grant payments made to suppliers who received greater than $250,000 in grant payments during 2014-2015. <br> The data is from Open Data Newfoundland and Labrador. <br> For the sake of this project, there is also one record that is not accurate/real. <br> See if you can spot it! <br> The amount is in Canadian Dollars.</p>
         <form method="post">
             <table>
                 <tr>
@@ -71,7 +72,10 @@
             <input type = "submit"></input>
         </form>
         <form action="/user/logout?_method=DELETE" method="POST">
-            <input type = "submit"></input>
+            <br>
+            <hr>
+            <br>
+            <button type = "submit">Click here to logout!</button>
         </form>
     </div>
 
