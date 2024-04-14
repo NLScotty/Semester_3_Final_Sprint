@@ -1,3 +1,6 @@
+// Some test routes I used to test the api before I have constructed the
+// UI. I invoked through postman, though one could do it on a web browser.
+
 const express =require('express');
 
 const router = express.Router();

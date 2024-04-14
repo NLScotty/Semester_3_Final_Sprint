@@ -50,6 +50,7 @@ myEmitter.on('logout', (email) => {
     });
 });
 
+// My middleware function
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
@@ -59,13 +60,19 @@ function checkAuthenticated(req, res, next) {
     }
 }
 
+// Due to how I have my routing set up, I can just call the middleware function here,
+// and it will apply to all the routes below it. Pretty nifty, right!?!
 router.use(checkAuthenticated)
 
+
+// I render the Search page, displaying session information such as the user.
 router.get('/search', (request, response) =>{
     response.render('searchpage', {fname: request.user.fname, lname: request.user.lname})
     myEmitter.emit('route','GET /search') 
 });
 
+// The rotue that uses the grant controller. It calls the function to use
+// based on the inputs of the form.
 router.post('/search', async (request, response) => {
     myEmitter.emit('search',request.user.email)
     try{
@@ -98,6 +105,8 @@ router.post('/search', async (request, response) => {
     }
 })
 
+// The logout function. From what I gather, logOut() is a function supplied
+// by express sessions to logout of a session.
 router.delete('/logout', (req, res, next) => {
     if(DEBUG) console.log("logout route");
     myEmitter.emit('logout',req.user.email) 

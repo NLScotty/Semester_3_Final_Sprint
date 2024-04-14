@@ -1,5 +1,6 @@
+// The file that contains the public routes.
 const express = require('express');
-const sqlUserDal = require('../services/sql-user-dal') // PostgreSQL DAL for Users
+const sqlUserDal = require('../services/sql-user-dal')
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const path = require('path');
@@ -38,6 +39,7 @@ myEmitter.on('update', (email) => {
   });
 });
 
+// My middleware function
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
       res.redirect('/user/search')
@@ -46,8 +48,11 @@ function checkNotAuthenticated(req, res, next) {
   }
 }
 
+// Due to how I have my routing set up, I can just call the middleware function here,
+// and it will apply to all the routes below it. Pretty nifty, right!?!
 router.use(checkNotAuthenticated)
 
+// The index page for this application is the login, so I redirect to it.
 router.get('/', (request, response) => {
   response.redirect('/login'); 
 })
@@ -57,6 +62,7 @@ router.get('/login', (request, response) => {
     myEmitter.emit('route','/login')   
 })
 
+// Using passport and flash, I handle the login.
 router.post('/login', passport.authenticate('local',{
     successRedirect: '/user/search',
     failureRedirect: '/login',
@@ -68,6 +74,8 @@ router.get('/register', (request, response) => {
     myEmitter.emit('route','/register') 
 })
 
+// Handles the creation of new accounts. Used Bcrypt to hash the passwords before
+// storing them to the data base.
 router.post('/register', async (request, response) => {
     try {
       const hashedPassword = await bcrypt.hash(request.body.password, 10)
