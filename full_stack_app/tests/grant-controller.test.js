@@ -1,3 +1,4 @@
+require('dotenv').config();
 global.DEBUG = false;
 
 const grantController = require('../controller/grant-controllers');

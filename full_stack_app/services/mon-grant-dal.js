@@ -1,7 +1,7 @@
 const dal = require("./mdb.js");
 
 async function getGrants() {
-  if(DEBUG) console.log("Auth.mongo.dal.getGrants()");
+  if(DEBUG) console.log("Mongo.dal.getGrants()");
   try {
     // connect to the mongo database
     await dal.connect();
