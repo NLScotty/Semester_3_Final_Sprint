@@ -72,10 +72,14 @@ router.post('/register', async (request, response) => {
     try {
       const hashedPassword = await bcrypt.hash(request.body.password, 10)
       let result = await sqlUserDal.addUser(request.body.fname, request.body.lname, request.body.email, hashedPassword)
-      response.redirect('/login')
-      myEmitter.emit('update',request.body.email)
+      if(result === '23505'){
+        response.render('register', {message : "Account with that email already exists!"})
+      }else{
+        response.render('accountcreated')
+        myEmitter.emit('update',request.body.email)
+      }
     } catch {
-      response.redirect('/register')
+      response.render('register', {message : "Unkown error has occured!"})
     }
 })
 
